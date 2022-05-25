@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+
 import NavBar from "./navBar";
+import Etudiants from "./etudiants";
+import Notifications from "./notifications.jsx";
+import Cards from "./cards";
 
 class Text extends Component {
   state = {
@@ -10,23 +14,23 @@ class Text extends Component {
       { name: "Salam", id: 4 },
       { name: "Hello", id: 5 },
     ],
+    notification: 0,
   };
+
+  handleNotification = () => {
+    this.setState({ notification: this.state.notification + 1 });
+  };
+
   render() {
     return (
-      // Rendre une liste avec map
       <>
-      <NavBar/>
-        <ul className="list-group">
-          {this.state.etudiants.map((etudiant) => {
-            if (etudiant.name === "Bao") {
-              return <li class="list-group-item" key={etudiant.id}> Bao interdit</li>;
-            } else {
-              return <li class="list-group-item" key={etudiant.id}> {etudiant.name}</li>;
-            }
-          })}
-        </ul>
-
-     
+        <NavBar />
+        <Etudiants etudiants={this.state.etudiants} />
+        <Notifications
+          handleNotification={this.handleNotification}
+          notification={this.state.notification}
+        />
+        <Cards />
       </>
     );
   }
