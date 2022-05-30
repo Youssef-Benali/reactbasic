@@ -4,6 +4,9 @@ import NavBar from "./navBar";
 import Etudiants from "./etudiants";
 import Notifications from "./notifications.jsx";
 import Cards from "./cards";
+import Classement from "./classement";
+
+import Bootstrap from "./bootstrap";
 
 class Text extends Component {
   state = {
@@ -15,6 +18,13 @@ class Text extends Component {
       { name: "Hello", id: 5 },
     ],
     notification: 0,
+    joueurs: [
+      {nom: "Bob", prenom: "Joe", score: 546},
+      {nom: "Sonic", prenom: "Boom", score: 2789},
+      {nom: "Hello", prenom: "Maximain", score: 456},
+      {nom: "Lorem", prenom: "Ipsum", score: 722},
+      {nom: "Raf", prenom: "Pite", score: 867},
+    ]
   };
 
   handleNotification = () => {
@@ -24,13 +34,17 @@ class Text extends Component {
   render() {
     return (
       <>
-        <NavBar />
+        {/* <NavBar />
         <Etudiants etudiants={this.state.etudiants} />
         <Notifications
           handleNotification={this.handleNotification}
           notification={this.state.notification}
         />
-        <Cards />
+        <Cards /> */}
+
+        <Bootstrap/>
+
+        {/* <Classement joueurs={this.state.joueurs}/> */}
       </>
     );
   }
