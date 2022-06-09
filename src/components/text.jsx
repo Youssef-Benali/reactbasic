@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 import NavBar from "./navBar";
 import Etudiants from "./etudiants";
 import Notifications from "./notifications.jsx";
 import Cards from "./cards";
 import Classement from "./classement";
+import { getPlayers } from "../services/fakeDataBase";
 
 import Bootstrap from "./bootstrap";
 
@@ -18,33 +24,38 @@ class Text extends Component {
       { name: "Hello", id: 5 },
     ],
     notification: 0,
-    joueurs: [
-      {nom: "Bob", prenom: "Joe", score: 546},
-      {nom: "Sonic", prenom: "Boom", score: 2789},
-      {nom: "Hello", prenom: "Maximain", score: 456},
-      {nom: "Lorem", prenom: "Ipsum", score: 722},
-      {nom: "Raf", prenom: "Pite", score: 867},
-    ]
+
+    joueurs: getPlayers()
   };
 
   handleNotification = () => {
     this.setState({ notification: this.state.notification + 1 });
   };
 
+  handleDelete = joueur => {
+    // [...] = Spread Operator
+    // On clone le tableau
+    const joueursCopy = [...this.state.joueurs]
+    // On filtre le tableau
+    const joueurs = joueursCopy.filter(j => j !== joueur)
+    // On met à jour la state avec le nouveau tableau
+    this.setState({joueurs})
+  }
+
   render() {
     return (
       <>
-        {/* <NavBar />
-        <Etudiants etudiants={this.state.etudiants} />
-        <Notifications
-          handleNotification={this.handleNotification}
-          notification={this.state.notification}
-        />
-        <Cards /> */}
-
-        <Bootstrap/>
-
-        {/* <Classement joueurs={this.state.joueurs}/> */}
+        <BrowserRouter>
+        <NavBar handleNotification={this.handleNotification}
+              notification={this.state.notification}/>
+          <Routes>
+            <Route path="/etudiants" element={<Etudiants etudiants={this.state.etudiants} />}/>
+            <Route path="/classement" element={<Classement onDelete={this.handleDelete} joueurs={this.state.joueurs}/>}/>
+            {/*  Créer une nouvelle route et afficher le composant <Cards/> */}
+            <Route path="/cards" element={<Cards/>}/>
+            
+          </Routes>
+        </BrowserRouter>
       </>
     );
   }

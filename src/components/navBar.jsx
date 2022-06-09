@@ -1,12 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
+import Notification from "../components/notifications";
+
+const NavBar = (props) => {
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            Navbar
+            <Link className="navbar-brand" to="/">
+              Navbar
+            </Link>
           </a>
           <button
             class="navbar-toggler"
@@ -22,22 +27,25 @@ const NavBar = () => {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+                <Link className="nav-link" to="etudiants">
+                  Etudiants
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Features
-                </a>
+                <Link className="nav-link" to="classement">
+                  Classement
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Pricing
-                </a>
+                <Notification
+                  notification={props.notification}
+                  handleNotification={props.handleNotification}
+                />
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <Link className="nav-link" to="/cards">
+                  Cards
+                </Link>
               </li>
             </ul>
           </div>
