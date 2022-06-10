@@ -6,15 +6,15 @@ import Notification from "../components/notifications";
 const NavBar = (props) => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <button className="navbar-brand" href="#">
             <Link className="navbar-brand" to="/">
               Navbar
             </Link>
-          </a>
+          </button>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -22,27 +22,27 @@ const NavBar = (props) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
                 <Link className="nav-link" to="etudiants">
                   Etudiants
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link className="nav-link" to="classement">
-                  Classement
+              <li className="nav-item">
+                <Link className="nav-link" to="classNameement">
+                  classNameement
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Notification
                   notification={props.notification}
                   handleNotification={props.handleNotification}
                 />
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link className="nav-link" to="/cards">
                   Cards
                 </Link>

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NavBar from "./navBar";
 import Etudiants from "./etudiants";
@@ -25,35 +21,52 @@ class Text extends Component {
     ],
     notification: 0,
 
-    joueurs: getPlayers()
+    joueurs: getPlayers(),
+    search: ""
   };
 
   handleNotification = () => {
     this.setState({ notification: this.state.notification + 1 });
   };
-
-  handleDelete = joueur => {
+  handleDelete = (joueur) => {
     // [...] = Spread Operator
     // On clone le tableau
-    const joueursCopy = [...this.state.joueurs]
+    const joueursCopy = [...this.state.joueurs];
     // On filtre le tableau
-    const joueurs = joueursCopy.filter(j => j !== joueur)
+    const joueurs = joueursCopy.filter((j) => j !== joueur);
     // On met à jour la state avec le nouveau tableau
-    this.setState({joueurs})
+    this.setState({ joueurs });
+  };
+  // Here, Ici
+  handleChange = (e) => {
+    this.setState({search: e.target.value})
   }
-
   render() {
     return (
       <>
         <BrowserRouter>
-        <NavBar handleNotification={this.handleNotification}
-              notification={this.state.notification}/>
+          <NavBar
+            handleNotification={this.handleNotification}
+            notification={this.state.notification}
+          />
           <Routes>
-            <Route path="/etudiants" element={<Etudiants etudiants={this.state.etudiants} />}/>
-            <Route path="/classement" element={<Classement onDelete={this.handleDelete} joueurs={this.state.joueurs}/>}/>
+            <Route
+              path="/etudiants"
+              element={<Etudiants etudiants={this.state.etudiants} />}
+            />
+            <Route
+              path="/classement"
+              element={
+                <Classement
+                  search={this.state.search}
+                  onChange={this.handleChange}
+                  onDelete={this.handleDelete}
+                  joueurs={this.state.joueurs}
+                />
+              }
+            />
             {/*  Créer une nouvelle route et afficher le composant <Cards/> */}
-            <Route path="/cards" element={<Cards/>}/>
-            
+            <Route path="/cards" element={<Cards />} />
           </Routes>
         </BrowserRouter>
       </>

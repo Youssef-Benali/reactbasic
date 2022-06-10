@@ -17,9 +17,9 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" className="btn btn-primary">
+              <button className="btn btn-primary">
                 Go somewheress
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -36,9 +36,9 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" className="btn btn-primary">
+              <button className="btn btn-primary">
                 Go somewhere
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -55,9 +55,9 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" className="btn btn-primary">
+              <button className="btn btn-primary">
                 Go somewhere
-              </a>
+              </button>
             </div>
           </div>
         </div>
