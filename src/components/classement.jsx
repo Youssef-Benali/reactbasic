@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/classement.css";
 
 const inputStyle={
   border : "1px solid green"
