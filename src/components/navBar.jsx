@@ -8,11 +8,9 @@ const NavBar = (props) => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <button className="navbar-brand" href="#">
-            <Link className="navbar-brand" to="/">
-              Navbar
-            </Link>
-          </button>
+          <Link className="navbar-brand" to="/">
+            Navbar
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -32,8 +30,13 @@ const NavBar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="classNameement">
-                  classNameement
+                <Link className="nav-link" to="classement">
+                  Classement
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cards">
+                  Cards
                 </Link>
               </li>
               <li className="nav-item">
@@ -41,11 +44,6 @@ const NavBar = (props) => {
                   notification={props.notification}
                   handleNotification={props.handleNotification}
                 />
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cards">
-                  Cards
-                </Link>
               </li>
             </ul>
           </div>
