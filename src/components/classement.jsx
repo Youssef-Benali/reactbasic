@@ -1,28 +1,25 @@
 import React from "react";
 
-const inputStyle={
-  border : "1px solid green"
-}
+const [inputBorderGreen, inputBorderRed] = [
+  { border: "2px solid green" },
+  { border: "2px solid red" },
+];
 
 const Classement = (props) => {
-  // Trier le tableau ici avec sort()
-  function compare(a, b) {
+  // Le tableau est trié avant d'être mappé
+  props.joueurs.sort((a, b) => {
     if (a.score > b.score) return -1;
     if (a.score < b.score) return 1;
     return 0;
-  }
-  // Le tableau est trié avant d'être mappé
-  props.joueurs.sort(compare);
+  });
   return (
     <>
       <div className="pb-3">
-        <label htmlFor="recherche" className="form-label">
-          Taille de l'input {props.search.length}
-        </label>
         <input
-          style={inputStyle}
+          style={props.search.length < 8 ? inputBorderRed : inputBorderGreen}
           onChange={props.onChange}
           value={props.search}
+          placeholder="Rechercher un joueur"
           type="text"
           className="form-control"
           id="recherche"
@@ -36,7 +33,6 @@ const Classement = (props) => {
             <th scope="col">Nom</th>
             <th scope="col">Prenom</th>
             <th scope="col">Score</th>
-
           </tr>
         </thead>
         <tbody>
