@@ -3,8 +3,8 @@ import React from "react";
 const Cards = () => {
   return (
     <div className="container">
-      <div className="row justify-content-center">
-        <div className="col ">
+      <div className="row ">
+        <div className="col">
           <div className="card" style={{ width: "18rem", margin: "1rem 0" }}>
             <img
               src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
@@ -17,9 +17,15 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
+<<<<<<< HEAD
               <a href="#" className="btn btn-primary">
                 Go somewheres
               </a>
+=======
+              <button className="btn btn-primary">
+                Go somewheress
+              </button>
+>>>>>>> 0feade28c67ca7a811331095dc3cfba6d1f15be2
             </div>
           </div>
         </div>
@@ -36,9 +42,9 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" className="btn btn-primary">
+              <button className="btn btn-primary">
                 Go somewhere
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -55,9 +61,9 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" className="btn btn-primary">
+              <button className="btn btn-primary">
                 Go somewhere
-              </a>
+              </button>
             </div>
           </div>
         </div>

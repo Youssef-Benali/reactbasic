@@ -1,50 +1,70 @@
 import React, { Component } from "react";
-import Compteur from "./components/compteur";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import NavBar from "./components/navBar";
+import Etudiants from "./components/etudiants";
+import Classement from "./components/classement";
+import Cards from "./components/cards";
+
+import { getPlayers } from "./services/fakeDataBase";
 
 class App extends Component {
-  // state = états
   state = {
-    // Ne jamais changer une state directement : Utiliser this.setState({})
-    compteur: 0,
-    isPremium: false,
+    etudiants: [
+      { name: "Zelda", id: 1 },
+      { name: "Bao", id: 2 },
+      { name: "Bao", id: 3 },
+      { name: "Salam", id: 4 },
+      { name: "Hello", id: 5 },
+    ],
+    notification: 0,
+    joueurs: getPlayers(),
+    search: "",
   };
 
-  // méthodes (fonction fléché) => bind this par défaut
-  incrementation = () => {
-    this.setState({ compteur: this.state.compteur + 1 });
+  handleNotification = () => {
+    this.setState({ notification: this.state.notification + 1 });
   };
-
-  // Méthode qui toggle isPremium
-  connection = () => {
-    this.setState({ isPremium: !this.state.isPremium });
+  handleDelete = (joueur) => {
+    // [...] = Spread Operator
+    // On clone le tableau
+    const joueursCopy = [...this.state.joueurs];
+    // On filtre le tableau
+    const joueurs = joueursCopy.filter((j) => j !== joueur);
+    // On met à jour la state avec le nouveau tableau
+    this.setState({ joueurs });
   };
-
-  // Méthode qui affiche le contenu
-  affichage = () => {
-    const { compteur } = this.state; // Interface (vous voyez les objets utilisés)
-    return (
-      <div>
-        <h1>Salut</h1>
-        {/* Si c'est en dessous de 10, c'est rouge sinon c'est vert */}
-        <p className={compteur < 10 ? "red" : "green"}>{compteur}</p>
-        {/* Rendu conditioné (Conditional rendering) */}
-        <p>{compteur > 5 ? "+ de 5" : null}</p>
-        {/* Créer une condition qui s'active uniquement à 8 et qui affiche "bravo" */}
-        <p>{compteur === 8 ? "bravo" : null}</p>
-        {/* Ne jamais mettre de parenthèse aux méthodes dans un event */}
-        <button onClick={this.incrementation}> Incrementer </button>
-      </div>
-    );
+  // Here, Ici
+  handleChange = (e) => {
+    this.setState({ search: e.target.value });
   };
-
   render() {
     return (
       <>
-        <Compteur 
-        connection={this.connection}
-        affichage={this.affichage}
-        isPremium={this.state.isPremium}/>
+        <BrowserRouter>
+          <NavBar
+            handleNotification={this.handleNotification}
+            notification={this.state.notification}
+          />
+          <Routes>
+            <Route
+              path="/etudiants"
+              element={<Etudiants etudiants={this.state.etudiants} />}
+            />
+            <Route
+              path="/classement"
+              element={
+                <Classement
+                  search={this.state.search}
+                  onChange={this.handleChange}
+                  onDelete={this.handleDelete}
+                  joueurs={this.state.joueurs}
+                />
+              }
+            />
+            <Route path="/cards" element={<Cards />} />
+          </Routes>
+        </BrowserRouter>
       </>
     );
   }
