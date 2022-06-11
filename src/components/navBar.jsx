@@ -37,15 +37,15 @@ const NavBar = (props) => {
                 </Link>
               </li>
               <li class="nav-item">
+                <Link className="nav-link" to="/cards">
+                  Cards
+                </Link>
+              </li>
+              <li class="nav-item position-absolute end-0">
                 <Notification
                   notification={props.notification}
                   handleNotification={props.handleNotification}
                 />
-              </li>
-              <li class="nav-item">
-                <Link className="nav-link" to="/cards">
-                  Cards
-                </Link>
               </li>
             </ul>
           </div>
