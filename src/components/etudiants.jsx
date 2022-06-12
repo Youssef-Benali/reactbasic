@@ -4,9 +4,9 @@ import React from "react";
 
 const Etudiants = (props) => {
   return (
-    <ul className="list-group" style={{padding: "1rem 0"}}>
+    <ul className="list-group p-3">
       {props.etudiants.map((e) => (
-        <li className="list-group-item"> {e.name}</li>
+        <li key={e.id} className="list-group-item"> {e.name}</li>
       ))}
     </ul>
   );

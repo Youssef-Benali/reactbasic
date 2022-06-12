@@ -6,7 +6,7 @@ import Notification from "../components/notifications";
 const NavBar = (props) => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar p-3 navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Navbar
@@ -34,20 +34,12 @@ const NavBar = (props) => {
                   Classement
                 </Link>
               </li>
-<<<<<<< HEAD
-              <li class="nav-item">
-=======
               <li className="nav-item">
->>>>>>> 0feade28c67ca7a811331095dc3cfba6d1f15be2
                 <Link className="nav-link" to="/cards">
                   Cards
                 </Link>
               </li>
-<<<<<<< HEAD
-              <li class="nav-item position-absolute end-0">
-=======
               <li className="nav-item">
->>>>>>> 0feade28c67ca7a811331095dc3cfba6d1f15be2
                 <Notification
                   notification={props.notification}
                   handleNotification={props.handleNotification}

@@ -7,6 +7,7 @@ import Classement from "./components/classement";
 import Cards from "./components/cards";
 
 import { getPlayers } from "./services/fakeDataBase";
+import Home from "./components/home";
 
 class App extends Component {
   state = {
@@ -20,6 +21,8 @@ class App extends Component {
     notification: 0,
     joueurs: getPlayers(),
     search: "",
+
+    value: ""
   };
 
   handleNotification = () => {
@@ -47,6 +50,7 @@ class App extends Component {
             notification={this.state.notification}
           />
           <Routes>
+            <Route path="/" element={<Home valeur={this.state.test}/>}/>
             <Route
               path="/etudiants"
               element={<Etudiants etudiants={this.state.etudiants} />}

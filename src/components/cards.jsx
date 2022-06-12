@@ -17,15 +17,9 @@ const Cards = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-<<<<<<< HEAD
-              <a href="#" className="btn btn-primary">
+              <button href="#" className="btn btn-primary">
                 Go somewheres
-              </a>
-=======
-              <button className="btn btn-primary">
-                Go somewheress
               </button>
->>>>>>> 0feade28c67ca7a811331095dc3cfba6d1f15be2
             </div>
           </div>
         </div>
