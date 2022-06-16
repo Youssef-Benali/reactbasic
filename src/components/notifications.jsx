@@ -11,7 +11,7 @@ const Notifications = (props) => {
         className="btn btn-primary"
       >
         {props.notification < 1 ? null : (
-          <span className="pe-2 ">Notifications</span>
+          <span className="pe-2">Notifications</span>
         )}
         <span
           className={
