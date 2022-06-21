@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import Form from "./form";
 
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import {
+  AiFillCheckCircle,
+  AiOutlineCheckCircle,
+  AiFillDelete,
+} from "react-icons/ai";
 
 // A school need an application for checking the students presence
 // We need to dynamically show up list of students per classe
@@ -26,6 +31,7 @@ class Ecole extends Component {
         lastName: "Uldin",
         asleep: false,
         presence: true,
+        liked: false,
       },
       {
         id: 2,
@@ -33,17 +39,61 @@ class Ecole extends Component {
         lastName: "Kossovo",
         asleep: true,
         presence: false,
+        liked: false,
       },
-      { id: 3, name: "Sébastien", lastName: "", asleep: false, presence: true },
-      { id: 4, name: "Bao", lastName: "", asleep: false, presence: true },
-      { id: 5, name: "Ellen", lastName: "", asleep: false, presence: true },
+      {
+        id: 3,
+        name: "Sébastien",
+        lastName: "",
+        asleep: false,
+        presence: true,
+        liked: false,
+      },
+      {
+        id: 4,
+        name: "Bao",
+        lastName: "",
+        asleep: false,
+        presence: true,
+        liked: false,
+      },
+      {
+        id: 5,
+        name: "Ellen",
+        lastName: "",
+        asleep: false,
+        presence: true,
+        liked: false,
+      },
     ],
   };
 
+  handleLike = (s) => {
+    // Cloner le tableau
+    const students = [...this.state.students];
+    // Récupérer l'index de l'objet en paramètre
+    const index = students.indexOf(s);
+    // Modifier la clé liked du tableau students
+    students[index].liked = !students[index].liked;
+    // Écraser le tableau state par le tableau cloné
+    this.setState({ students });
+  };
+
+  handleDelete = (s) => {
+    const students = this.state.students.filter((student) => student !== s);
+    this.setState({ students });
+  };
+  
+  handleChange = () => {
+    console.log('hello');
+  }
+
   render() {
     return (
-      <div>
-        {this.state.title}
+      <div style={{ margin: "1rem" }}>
+        <p>
+          Il y'a {this.state.students.length} étudiants dans la base de données
+        </p>
         <table className="table">
           <thead>
             <tr>
@@ -53,6 +103,7 @@ class Ecole extends Component {
               <th scope="col">État</th>
               <th scope="col">Présence</th>
               <th scope="col">Like</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -65,13 +116,24 @@ class Ecole extends Component {
                 <td style={s.presence === true ? present : absent}>
                   {s.presence === true ? "Présent" : "Absent"}
                 </td>
-                <td>
-                  <AiOutlineHeart />
+                <td
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.handleLike(s)}
+                >
+                  {s.liked === false ? (
+                    <AiOutlineCheckCircle />
+                  ) : (
+                    <AiFillCheckCircle />
+                  )}
+                </td>
+                <td onClick={() => this.handleDelete(s)}>
+                  <AiFillDelete />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+             <Form onChange={this.handleChange}/> 
       </div>
     );
   }
