@@ -66,6 +66,7 @@ class Ecole extends Component {
         liked: false,
       },
     ],
+    student: { name: "", lastName: "" },
   };
 
   handleLike = (s) => {
@@ -83,10 +84,30 @@ class Ecole extends Component {
     const students = this.state.students.filter((student) => student !== s);
     this.setState({ students });
   };
-  
-  handleChange = () => {
-    console.log('hello');
-  }
+
+  handleChange = ({ currentTarget }) => {
+    const student = { ...this.state.student };
+    student[currentTarget.name] = currentTarget.value;
+    this.setState({ student: student });
+  };
+
+  handleAddPlayer = (e) => {
+    e.preventDefault();
+    const id = this.state.students.length + 1
+
+    const students = [...this.state.students];
+    const student = {
+      id: id,
+      ...this.state.student,
+      asleep: false,
+      presence: true,
+      liked: false,
+    };
+    // Ajouter la copie du joueur dans la copie du tableau
+    students.push(student);
+
+    this.setState({ students: students });
+  };
 
   render() {
     return (
@@ -133,7 +154,7 @@ class Ecole extends Component {
             ))}
           </tbody>
         </table>
-             <Form onChange={this.handleChange}/> 
+        <Form onAddPlayer={this.handleAddPlayer} onChange={this.handleChange} />
       </div>
     );
   }

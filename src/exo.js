@@ -1,6 +1,10 @@
-let students = [
-  { id: 1, name: "Shams", lastName: "Uldin", presence: true },
-  { id: 2, name: "Rinor", lastName: "Kossovo", presence: false },
-];
+const objet = {id: 1, name: "hello"}
 
-console.log(students.map(s => s.lastName))
+let copieDeObjet = {...objet}
+
+
+// for (let i = 0; i < table.length; i++) {
+//     copieDuTableau.push(table[i]);
+// }
+
+console.log(copieDeObjet)

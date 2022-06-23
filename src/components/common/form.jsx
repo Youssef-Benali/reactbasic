@@ -17,7 +17,7 @@ const Form = (props) => {
         placeholder="Last Name"
         type="text"
       />
-      <button> Ajouter étudiant</button>
+      <button onClick={props.onAddPlayer}> Ajouter étudiant</button>
     </form>
   );
 };
